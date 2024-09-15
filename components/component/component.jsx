@@ -28,19 +28,19 @@ import React, { useState } from 'react';
 
 export function Component() {
 
-   // State to manage the visibility of the mobile menu
-   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // State to manage the visibility of the mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-   // Function to toggle menu visibility
-   const toggleMenu = () => {
-     setIsMenuOpen(!isMenuOpen);
-   };
- return (
+  // Function to toggle menu visibility
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  return (
     (<div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b bg-background">
-      <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Mobile Menu Button */}
-        <button
+        <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+          {/* Mobile Menu Button */}
+          <button
             onClick={toggleMenu}
             className="sm:hidden p-2 rounded-md hover:bg-primary-hover transition-colors"
           >
@@ -60,160 +60,92 @@ export function Component() {
               />
             </svg>
           </button>
-        <div className="flex items-center gap-4">
-          <span className="font-bold">Algo Lend</span>
+          {/* Logo Button*/}
+          <div className="flex items-center gap-4">
+            <span className="font-bold">Algo Lend</span>
 
-          
 
+
+            
+          </div>
           {/* Desktop Menu */}
           <div className="hidden sm:flex items-center justify-center gap-4">
-            {/* Menu Items */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="hover:bg-primary-hover transition-colors">Get a Loan</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Get a new loan</DropdownMenuItem>
-                <DropdownMenuItem>Loan received</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="hover:bg-primary-hover transition-colors">Give a Loan</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Give a new loan</DropdownMenuItem>
-                <DropdownMenuItem>Loans given</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Link href="#" className="hover:underline" prefetch={false}>
-              Loans
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="hover:bg-primary-hover transition-colors">Community</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Discord
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Blog
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Forum
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="hover:bg-primary-hover transition-colors">Resources</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    FAQs
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Stats
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Documentation
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              {/* Menu Items */}
+
+              <Button variant="outline">Loans</Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline">Community</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      Discord
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      Blog
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      Forum
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline">Resources</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      FAQs
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      Stats
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="#" className="hover:underline" prefetch={false}>
+                      Documentation
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            {/* <div></div>
+            <div></div>
+            <div></div> */}
+          {/* Right-side button */}
+          <div className="flex items-center gap-4">
+            <Button className="px-6">Dashboard</Button>
           </div>
         </div>
 
-        {/* Right-side button */}
-        <div className="flex items-center gap-4">
-          <Button className="px-6">Dashboard</Button>
-        </div>
-      </div>
+        {/* Mobile Menu (shown when isMenuOpen is true) */}
+        {isMenuOpen && (
+          <div className="sm:hidden bg-background p-2">
+            {/* Menu Items for Mobile */}
 
-      {/* Mobile Menu (shown when isMenuOpen is true) */}
-      {isMenuOpen && (
-        <div className="sm:hidden bg-background p-4">
-          {/* Menu Items for Mobile */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="hover:bg-primary-hover transition-colors w-full">Get a Loan</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>Get a new loan</DropdownMenuItem>
-              <DropdownMenuItem>Loan received</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="hover:bg-primary-hover transition-colors w-full">Give a Loan</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>Give a new loan</DropdownMenuItem>
-              <DropdownMenuItem>Loans given</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Link href="#" className="hover:underline block py-2" prefetch={false}>
-            Loans
-          </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="hover:bg-primary-hover transition-colors w-full">Community</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  Discord
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  Blog
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  Forum
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="hover:bg-primary-hover transition-colors w-full">Resources</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  FAQs
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  Stats
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#" className="hover:underline block py-2" prefetch={false}>
-                  Documentation
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      )}
-    </header>
+
+            <Button className="transition-colors w-full my-2">Loans</Button>
+            <Button className="transition-colors w-full">Community</Button>
+
+
+
+
+
+            <Button className="hover:bg-primary-hover transition-colors w-full my-2">Resources</Button>
+
+
+          </div>
+        )}
+      </header>
       <main className="flex-1">
         <section className=" py-12 px-3 sm:py-16 md:py-20">
           <div className="grid gap-8 md:grid-cols-2">
