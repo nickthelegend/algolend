@@ -17,29 +17,205 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
+
+"use client"; // Add this at the top of the file
+
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
+import React, { useState } from 'react';
 
 export function Component() {
-  return (
+
+   // State to manage the visibility of the mobile menu
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+   // Function to toggle menu visibility
+   const toggleMenu = () => {
+     setIsMenuOpen(!isMenuOpen);
+   };
+ return (
     (<div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b bg-background">
-        <div
-          className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
-          <Link href="#" className="flex items-center gap-2 font-bold" prefetch={false}>
-            <HashIcon className="h-6 w-6 text-primary" />
-            <span>Algo Lend</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Button className="px-6">Dashboard</Button>
-            {/* <Button variant="oput">App</Button> */}
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+        {/* Mobile Menu Button */}
+        <button
+            onClick={toggleMenu}
+            className="sm:hidden p-2 rounded-md hover:bg-primary-hover transition-colors"
+          >
+            {/* Icon for the mobile menu button */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        <div className="flex items-center gap-4">
+          <span className="font-bold">Algo Lend</span>
 
+          
+
+          {/* Desktop Menu */}
+          <div className="hidden sm:flex items-center justify-center gap-4">
+            {/* Menu Items */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="hover:bg-primary-hover transition-colors">Get a Loan</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Get a new loan</DropdownMenuItem>
+                <DropdownMenuItem>Loan received</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="hover:bg-primary-hover transition-colors">Give a Loan</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Give a new loan</DropdownMenuItem>
+                <DropdownMenuItem>Loans given</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Link href="#" className="hover:underline" prefetch={false}>
+              Loans
+            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="hover:bg-primary-hover transition-colors">Community</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    Discord
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    Blog
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    Forum
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="hover:bg-primary-hover transition-colors">Resources</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    FAQs
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    Stats
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="hover:underline" prefetch={false}>
+                    Documentation
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
-      </header>
+
+        {/* Right-side button */}
+        <div className="flex items-center gap-4">
+          <Button className="px-6">Dashboard</Button>
+        </div>
+      </div>
+
+      {/* Mobile Menu (shown when isMenuOpen is true) */}
+      {isMenuOpen && (
+        <div className="sm:hidden bg-background p-4">
+          {/* Menu Items for Mobile */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="hover:bg-primary-hover transition-colors w-full">Get a Loan</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Get a new loan</DropdownMenuItem>
+              <DropdownMenuItem>Loan received</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="hover:bg-primary-hover transition-colors w-full">Give a Loan</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Give a new loan</DropdownMenuItem>
+              <DropdownMenuItem>Loans given</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Link href="#" className="hover:underline block py-2" prefetch={false}>
+            Loans
+          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="hover:bg-primary-hover transition-colors w-full">Community</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  Discord
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  Blog
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  Forum
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="hover:bg-primary-hover transition-colors w-full">Resources</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  FAQs
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  Stats
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="#" className="hover:underline block py-2" prefetch={false}>
+                  Documentation
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      )}
+    </header>
       <main className="flex-1">
-        <section className="py-12 px-3 sm:py-16 md:py-20 ">
+        <section className=" py-12 px-3 sm:py-16 md:py-20">
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">Decentralized Peer-to-Peer Lending</h1>
@@ -109,8 +285,8 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className="bg-muted py-12 px-3 sm:py-16 md:py-20">
-          <div className="grid gap-8 md:grid-cols-2">
+        <section className="bg-muted py-12 sm:py-16 md:py-20">
+          <div className=" grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">Flexible Loan Terms</h2>
               <p className="text-muted-foreground">
@@ -222,7 +398,7 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className="py-12 px-3 sm:py-16 md:py-20">
+        <section className=" py-12 sm:py-16 md:py-20">
           <h2 className="mb-8 text-2xl font-bold sm:text-3xl md:text-4xl">Why Choose Algo Lend?</h2>
           <div className="grid gap-8 md:grid-cols-3">
             <Card>
@@ -263,7 +439,7 @@ export function Component() {
       </main>
       <footer className="border-t bg-background">
         <div
-          className="flex items-center justify-between py-4 px-4 sm:px-6 md:px-8">
+          className=" flex items-center justify-between py-4 px-4 sm:px-6 md:px-8">
           <p className="text-sm text-muted-foreground">&copy; 2024 Algo Lend. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link
@@ -283,6 +459,7 @@ export function Component() {
       </footer>
     </div>)
   );
+
 }
 
 function CoinsIcon(props) {
