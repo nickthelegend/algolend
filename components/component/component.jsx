@@ -217,7 +217,7 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className="bg-muted py-12 sm:py-16 md:py-20">
+        <section className="bg-muted px-3 py-12 sm:py-16 md:py-20">
           <div className=" grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">Flexible Loan Terms</h2>
@@ -330,7 +330,7 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className=" py-12 sm:py-16 md:py-20">
+        <section className=" py-12 px-3 sm:py-16 md:py-20">
           <h2 className="mb-8 text-2xl font-bold sm:text-3xl md:text-4xl">Why Choose Algo Lend?</h2>
           <div className="grid gap-8 md:grid-cols-3">
             <Card>
