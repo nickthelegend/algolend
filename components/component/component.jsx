@@ -26,29 +26,18 @@ export function Component() {
     (<div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div
-          className="container flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+          className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
           <Link href="#" className="flex items-center gap-2 font-bold" prefetch={false}>
             <HashIcon className="h-6 w-6 text-primary" />
             <span>Algo Lend</span>
           </Link>
           <div className="flex items-center gap-4">
-            <Link
-              href="#"
-              className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-              prefetch={false}>
-              Login
-            </Link>
-            <Link
-              href="#"
-              className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-              prefetch={false}>
-              Sign Up
-            </Link>
+            <Button variant="outline">Connect Wallet</Button>
           </div>
         </div>
       </header>
       <main className="flex-1">
-        <section className="container py-12 px-3 sm:py-16 md:py-20 ">
+        <section className="py-12 px-3 sm:py-16 md:py-20 ">
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">Decentralized Peer-to-Peer Lending</h1>
@@ -119,7 +108,7 @@ export function Component() {
           </div>
         </section>
         <section className="bg-muted py-12 px-3 sm:py-16 md:py-20">
-          <div className="container grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">Flexible Loan Terms</h2>
               <p className="text-muted-foreground">
@@ -231,7 +220,7 @@ export function Component() {
             </div>
           </div>
         </section>
-        <section className="container py-12 px-3 sm:py-16 md:py-20">
+        <section className="py-12 px-3 sm:py-16 md:py-20">
           <h2 className="mb-8 text-2xl font-bold sm:text-3xl md:text-4xl">Why Choose Algo Lend?</h2>
           <div className="grid gap-8 md:grid-cols-3">
             <Card>
@@ -272,7 +261,7 @@ export function Component() {
       </main>
       <footer className="border-t bg-background">
         <div
-          className="container flex items-center justify-between py-4 px-4 sm:px-6 md:px-8">
+          className="flex items-center justify-between py-4 px-4 sm:px-6 md:px-8">
           <p className="text-sm text-muted-foreground">&copy; 2024 Algo Lend. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link
