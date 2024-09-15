@@ -32,7 +32,9 @@ export function Component() {
             <span>Algo Lend</span>
           </Link>
           <div className="flex items-center gap-4">
-            <Button variant="outline">Connect Wallet</Button>
+            <Button className="px-6">Dashboard</Button>
+            {/* <Button variant="oput">App</Button> */}
+
           </div>
         </div>
       </header>
