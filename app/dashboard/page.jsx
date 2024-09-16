@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import Image from "next/image";
 
 // Corrected component with default export
 export default function Dashboard() {
@@ -55,13 +56,13 @@ export default function Dashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <img
-                        src="@/components/component/svg/ethereum-eth-logo.svg"
+                      <Image
+                        src="/images/usd-coin-usdc-logo.svg"
                         width={32}
                         height={32}
                         alt="USDC"
                         className="rounded-full"
-                        style={{ aspectRatio: "32/32", objectFit: "cover" }}
+                        style={{ aspectRatio: "32/32", objectFit: "contain" }}
                       />
                       <span>USDC</span>
                     </div>
@@ -74,13 +75,13 @@ export default function Dashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <img
-                        src="@/components/component/svg/ethereum-eth-logo.svg"
+                      <Image
+                        src="/images/ethereum-eth-logo.svg"
                         width={32}
                         height={32}
                         alt="ETH"
                         className="rounded-full"
-                        style={{ aspectRatio: "32/32", objectFit: "cover" }}
+                        style={{ aspectRatio: "32/32", objectFit: "contain" }}
                       />
                       <span>ETH</span>
                     </div>
@@ -93,13 +94,13 @@ export default function Dashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <img
-                        src="@/components/component/svg/ethereum-eth-logo.svg"
+                      <Image
+                        src="/images/bitcoin-btc-logo.svg"
                         width={32}
                         height={32}
                         alt="BTC"
                         className="rounded-full"
-                        style={{ aspectRatio: "32/32", objectFit: "cover" }}
+                        style={{ aspectRatio: "32/32", objectFit: "contain" }}
                       />
                       <span>BTC</span>
                     </div>
