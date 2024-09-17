@@ -123,7 +123,7 @@ export function Component() {
             <div></div> */}
           {/* Right-side button */}
           <div className="flex items-center gap-4">
-            <Button><Link href="/dashboard">Dashboard</Link></Button>
+            <Button className="w-32"><Link href="/dashboard">Dashboard</Link></Button>
           </div>
         </div>
 

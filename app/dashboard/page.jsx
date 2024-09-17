@@ -106,7 +106,7 @@ export default function Dashboard() {
             <div></div> */}
           {/* Right-side button */}
           <div className="flex items-center gap-4">
-            <Button ><Link href="w-fit">Connect Wallet</Link></Button>
+          <Button  className="w-32">Connect Wallet</Button>
           </div>
         </div>
 
