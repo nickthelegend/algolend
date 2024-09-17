@@ -135,7 +135,7 @@ export default function Dashboard() {
             <CardTitle>Total Supply</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold">$1,234,567</div>
+            <div className="text-xl sm:text-4xl font-bold">$1,234,567</div>
             <div className="text-muted-foreground text-sm">Supplied across all assets</div>
           </CardContent>
         </Card>
@@ -144,7 +144,7 @@ export default function Dashboard() {
             <CardTitle>Total Borrow</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold">$987,654</div>
+            <div className="text-xl sm:text-4xl font-bold">$987,654</div>
             <div className="text-muted-foreground text-sm">Borrowed across all assets</div>
           </CardContent>
         </Card>
@@ -229,32 +229,32 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      <div className="flex flex-row gap-4 p-4 md:p-6">
+      <div className="flex sm:flex-row gap-4 p-4 md:p-6 flex-col">
   {/* Left Section: Collateral Management */}
-  <Card className="w-1/2">
+  <Card className="w-[100%] sm:w-1/2 ">
     <CardHeader>
-      <CardTitle>Collateral Management</CardTitle>
+      <CardTitle className="text-sm sm:text-2xl ">Collateral Management</CardTitle>
     </CardHeader>
     <CardContent>
       <div className="grid gap-4">
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <div className="text-muted-foreground text-sm">Collateral Value</div>
-            <div className="sm:text-2xl font-bold">$750,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Collateral Value</div>
+            <div className="text-sm sm:text-2xl font-bold">$750,000</div>
           </div>
           <div>
-            <div className="text-muted-foreground text-sm">Liquidation Point</div>
-            <div className="sm:text-2xl font-bold">$600,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Liquidation Point</div>
+            <div className="text-sm sm:text-2xl font-bold">$600,000</div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <div className="text-muted-foreground text-sm">Borrow Capacity</div>
-            <div className="sm:text-2xl font-bold">$450,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Borrow Capacity</div>
+            <div className="text-sm sm:text-2xl font-bold">$450,000</div>
           </div>
           <div>
-            <div className="text-muted-foreground text-sm">Available to Borrow</div>
-            <div className="sm:text-2xl font-bold">$150,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Available to Borrow</div>
+            <div className="text-sm sm:text-2xl font-bold">$150,000</div>
           </div>
         </div>
       </div>
@@ -262,30 +262,30 @@ export default function Dashboard() {
   </Card>
 
   {/* Right Section: Another Collateral Management */}
-  <Card className="w-1/2">
+  <Card className="w-[100%] sm:w-1/2">
     <CardHeader>
-      <CardTitle>Collateral Management</CardTitle>
+      <CardTitle className="text-sm sm:text-2xl ">Collateral Management</CardTitle>
     </CardHeader>
     <CardContent>
       <div className="grid gap-4">
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <div className="text-muted-foreground text-sm">Collateral Value</div>
-            <div className="sm:text-2xl font-bold">$750,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Collateral Value</div>
+            <div className="text-sm sm:text-2xl font-bold">$750,000</div>
           </div>
           <div>
-            <div className="text-muted-foreground text-sm">Liquidation Point</div>
-            <div className="sm:text-2xl font-bold">$600,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Liquidation Point</div>
+            <div className="text-sm sm:text-2xl font-bold">$600,000</div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <div className="text-muted-foreground text-sm">Borrow Capacity</div>
-            <div className="sm:text-2xl font-bold">$450,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Borrow Capacity</div>
+            <div className="text-sm sm:text-2xl font-bold">$450,000</div>
           </div>
           <div>
-            <div className="text-muted-foreground text-sm">Available to Borrow</div>
-            <div className="sm:text-2xl font-bold">$150,000</div>
+            <div className="text-xs text-muted-foreground sm:text-sm">Available to Borrow</div>
+            <div className="text-sm sm:text-2xl font-bold">$150,000</div>
           </div>
         </div>
       </div>
