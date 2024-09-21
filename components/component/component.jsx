@@ -44,29 +44,8 @@ export function Component() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="sm:hidden p-2 rounded-md hover:bg-primary-hover transition-colors"
-          >
-            {/* Icon for the mobile menu button */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-          {/* Logo Button*/}
-          <div className="flex items-center gap-4 sm:w-48 w-24" >
+          
+          <div className="flex items-center gap-4 sm:w-48 w-28" >
           <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 572.000000 161.000000" preserveAspectRatio="xMidYMid meet">
 
 <g transform="translate(0.000000,161.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
@@ -85,55 +64,8 @@ export function Component() {
 </svg>
 </div>
           {/* Desktop Menu */}
-          <div className="hidden sm:flex items-center justify-center gap-4">
-            {/* Menu Items */}
+          
 
-            <Button variant="outline">Loans</Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline">Community</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Discord
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Blog
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Forum
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline">Resources</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    FAQs
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Stats
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="#" className="hover:underline" prefetch={false}>
-                    Documentation
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
           {/* <div></div>
             <div></div>
             <div></div> */}
@@ -145,19 +77,8 @@ export function Component() {
           </div>
         </div>
 
-        {/* Mobile Menu (shown when isMenuOpen is true) */}
-        {isMenuOpen && (
-          <div className="sm:hidden bg-background p-2">
-            {/* Menu Items for Mobile */}
-
-            <Button className="transition-colors w-full my-2">Loans</Button>
-            <Button className="transition-colors w-full">Community</Button>
-
-            <Button className="hover:bg-primary-hover transition-colors w-full my-2">
-              Resources
-            </Button>
-          </div>
-        )}
+        
+        
       </header>
       <main className="flex-1">
         <section className=" py-12 px-3 sm:py-16 md:py-20">
