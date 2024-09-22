@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useState } from 'react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
+import LogoSVG from "@/components/ui/logo";
 
 // Corrected component with default export
 export default function Dashboard() {
@@ -45,7 +46,7 @@ export default function Dashboard() {
           </button>
           {/* Logo Button*/}
           <div className="flex items-center gap-4">
-            <span className="font-bold">Algo Lend</span>
+           <LogoSVG/>
 
 
 

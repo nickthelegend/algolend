@@ -46,9 +46,9 @@ export function Component() {
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
 
-          <div className="flex items-center gap-4 sm:w-48 w-28" >
+          
             <LogoSVG/>
-          </div>
+          {/* </div> */}
           {/* Desktop Menu */}
 
 
