@@ -11,280 +11,351 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select"
 import HeaderwithLogo from "@/components/com/header"
+import { SelectValue } from "@radix-ui/react-select"
 
-export default function  borrow() {
-  return (
-    (<div className="min-h-screen bg-black text-white ">
-      <HeaderwithLogo/>
-      <main className="p-4 space-y-8">
-        <section className="bg-blue-600 p-4 rounded-lg">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold">Personal Stats</h2>
-            <div className="flex items-center space-x-2">
-              <span>
-                Total Collateralized: <strong>$1.04</strong>
-              </span>
-              <span>
-                Total Borrowed: <strong>$0.00</strong>
-              </span>
-              <span>
-                Net APY: <strong>3.92%</strong>
-              </span>
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold">Your Loans</h2>
-            <Button>Create new Loan</Button>
-          </div>
-          <Tabs>
-            <TabsList>
-              <TabsTrigger>Your Loans</TabsTrigger>
-              <TabsTrigger>Your Collaterals</TabsTrigger>
-              <TabsTrigger>Your Borrows</TabsTrigger>
-            </TabsList>
-            <TabsContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Loan Type</TableHead>
-                    <TableHead>Collateral Balance</TableHead>
-                    <TableHead>Borrow Balance</TableHead>
-                    <TableHead>Liquidation Margin</TableHead>
-                    <TableHead>Net APY</TableHead>
-                    <TableHead>LTV</TableHead>
-                    <TableHead />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>ik</TableCell>
-                    <TableCell>GENERAL</TableCell>
-                    <TableCell>$1.04</TableCell>
-                    <TableCell>$0.00</TableCell>
-                    <TableCell>
-                      100%<Badge>Low Risk</Badge>
-                    </TableCell>
-                    <TableCell>3.92%</TableCell>
-                    <TableCell>0%</TableCell>
-                    <TableCell>
-                      <Button variant="outline">Manage</Button>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TabsContent>
-            
-          </Tabs>
-        </section>
-        <div className="grid gap-4 md:grid-cols-2">
-          <section className="bg-gray-800 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold">Available to Collateralize</h2>
-            <div className="flex justify-between items-center">
-              <Input type="search" placeholder="Search" className="w-1/2" />
-              <Select>
-                <SelectTrigger>Filter by</SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="crypto">Crypto</SelectItem>
-                  <SelectItem value="fiat">Fiat</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Asset</TableHead>
-                  <TableHead>Wallet Balance</TableHead>
-                  <TableHead>APY</TableHead>
-                  <TableHead />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="ALGO"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>ALGO</span>
+export default function borrow() {
+    return (
+        (<div className="min-h-screen bg-black text-white ">
+            <HeaderwithLogo />
+            <main className="p-4 space-y-8">
+                <section className="bg-blue-600 p-4 rounded-lg">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-lg font-semibold">Personal Stats</h2>
+                        <div className="flex items-center space-x-2">
+                            <span>
+                                Total Collateralized: <strong>$1.04</strong>
+                            </span>
+                            <span>
+                                Total Borrowed: <strong>$0.00</strong>
+                            </span>
+                            <span>
+                                Net APY: <strong>3.92%</strong>
+                            </span>
+                        </div>
                     </div>
-                  </TableCell>
-                  <TableCell>
-                    9.54 <span className="text-muted-foreground">$122</span>
-                  </TableCell>
-                  <TableCell>3.92%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Collateralize</Button>
-                    <Button variant="outline">Swap and Collateralize</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="gALGO"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>gALGO</span>
+                </section>
+                <section>
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-lg font-semibold">Your Loans</h2>
+                        <Button>Create new Loan</Button>
                     </div>
-                  </TableCell>
-                  <TableCell>0.00</TableCell>
-                  <TableCell>0%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Collateralize</Button>
-                    <Button variant="outline">Swap and Collateralize</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="USDC"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>USD Coin</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>0.00</TableCell>
-                  <TableCell>0.44%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Collateralize</Button>
-                    <Button variant="outline">Swap and Collateralize</Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </section>
-          <section className="bg-gray-800 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold">Available to Borrow</h2>
-            <div className="flex justify-between items-center">
-              <Input type="search" placeholder="Search" className="w-1/2" />
-              <Select>
-                <SelectTrigger>Filter by</SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="crypto">Crypto</SelectItem>
-                  <SelectItem value="fiat">Fiat</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Asset</TableHead>
-                  <TableHead>Available</TableHead>
-                  <TableHead>Variable APY</TableHead>
-                  <TableHead>Stable APY</TableHead>
-                  <TableHead />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="ALGO"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>ALGO</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    4,306.531805 <span className="text-muted-foreground">$552.31</span>
-                  </TableCell>
-                  <TableCell>6.96%</TableCell>
-                  <TableCell>10.01%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Borrow</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="USDC"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>USD Coin</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    3,276.576049 <span className="text-muted-foreground">$3,276.57</span>
-                  </TableCell>
-                  <TableCell>2.51%</TableCell>
-                  <TableCell>9.92%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Borrow</Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/placeholder.svg"
-                        alt="USDT"
-                        className="h-6 w-6"
-                        width="24"
-                        height="24"
-                        style={{ aspectRatio: "24/24", objectFit: "cover" }} />
-                      <span>Tether</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    686.86078 <span className="text-muted-foreground">$686.86</span>
-                  </TableCell>
-                  <TableCell>3.83%</TableCell>
-                  <TableCell>8.13%</TableCell>
-                  <TableCell>
-                    <Button variant="outline">Borrow</Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </section>
-        </div>
-      </main>
-    </div>)
-  );
+                    <Tabs defaultValue="tab1">
+                        <TabsList>
+                            <TabsTrigger value="tab1">Your Loans</TabsTrigger>
+                            <TabsTrigger value="tab2">Your Collaterals</TabsTrigger>
+                            <TabsTrigger value="tab3">Your Borrows</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="tab1">
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Name</TableHead>
+                                        <TableHead>Loan Type</TableHead>
+                                        <TableHead>Collateral Balance</TableHead>
+                                        <TableHead>Borrow Balance</TableHead>
+                                        <TableHead>Liquidation Margin</TableHead>
+                                        <TableHead>Net APY</TableHead>
+                                        <TableHead>LTV</TableHead>
+                                        <TableHead />
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>ik</TableCell>
+                                        <TableCell>GENERAL</TableCell>
+                                        <TableCell>$1.04</TableCell>
+                                        <TableCell>$0.00</TableCell>
+                                        <TableCell>
+                                            100%<Badge>Low Risk</Badge>
+                                        </TableCell>
+                                        <TableCell>3.92%</TableCell>
+                                        <TableCell>0%</TableCell>
+                                        <TableCell>
+                                            <Button variant="outline">Manage</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TabsContent>
+
+                        <TabsContent value="tab2">
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Asset</TableHead>
+                                        <TableHead>Amount</TableHead>
+                                        <TableHead>Wallet Balance</TableHead>
+                                        <TableHead>Borrow Balance</TableHead>
+                                        <TableHead>Collateral APY</TableHead>
+                                        <TableHead>Net APY</TableHead>
+
+                                        <TableHead />
+                                        {/* <TableHead /> */}
+
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>ALGO</TableCell>
+                                        <TableCell>8.172785</TableCell>
+                                        <TableCell>$0.00</TableCell>
+                                        <TableCell>3.91%</TableCell>
+                                        {/* <TableCell>1<Badge>Low Risk</Badge>
+                    </TableCell> */}
+                                        <TableCell>3.92%</TableCell>
+                                        <TableCell>0%</TableCell>
+                                        <TableCell>
+                                            <Button variant="outline">Manage</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TabsContent>
+
+                        <TabsContent value="tab3">
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Asset</TableHead>
+                                        <TableHead>Amount</TableHead>
+                                        <TableHead>Wallet Balance</TableHead>
+                                        <TableHead>Borrow APY</TableHead>
+                                        <TableHead>Collateral APY</TableHead>
+                                        <TableHead>Loan</TableHead>
+                                        {/* <TableHead>LTV</TableHead> */}
+                                        <TableHead />
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>ALGO</TableCell>
+                                        <TableCell>8.172785</TableCell>
+                                        <TableCell>$0.00</TableCell>
+                                        <TableCell>3.91%</TableCell>
+                                        {/* <TableCell>1<Badge>Low Risk</Badge>
+                    </TableCell> */}
+                                        <TableCell>3.92%</TableCell>
+                                        <TableCell>0%</TableCell>
+                                        <TableCell>
+                                            <Button variant="outline">Manage</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TabsContent>
+                    </Tabs>
+                </section>
+                <div className="grid gap-4 md:grid-cols-2">
+                    <section className="bg-gray-800 p-4 rounded-lg">
+                        <h2 className="text-lg font-semibold">Available to Collateralize</h2>
+                        <div className="flex justify-between items-center">
+                            <Input type="search" placeholder="Search" className="w-1/2" />
+                            <Select>
+                                <SelectTrigger>Filter by</SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All</SelectItem>
+                                    <SelectItem value="crypto">Crypto</SelectItem>
+                                    <SelectItem value="fiat">Fiat</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Asset</TableHead>
+                                    <TableHead>Wallet Balance</TableHead>
+                                    <TableHead>APY</TableHead>
+                                    <TableHead />
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="ALGO"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>ALGO</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        9.54 <span className="text-muted-foreground">$122</span>
+                                    </TableCell>
+                                    <TableCell>3.92%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Collateralize</Button>
+                                        <Button variant="outline">Swap and Collateralize</Button>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="gALGO"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>gALGO</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>0.00</TableCell>
+                                    <TableCell>0%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Collateralize</Button>
+                                        <Button variant="outline">Swap and Collateralize</Button>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="USDC"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>USD Coin</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>0.00</TableCell>
+                                    <TableCell>0.44%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Collateralize</Button>
+                                        <Button variant="outline">Swap and Collateralize</Button>
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </section>
+                    <section className="bg-gray-800 p-4 rounded-lg">
+                        <h2 className="text-lg font-semibold">Available to Borrow</h2>
+                        <div className="flex justify-between items-center">
+                            <Input type="search" placeholder="Search" className="w-1/2" />
+                            <Select>
+                                <SelectTrigger aria-label="Type">
+                                    <SelectValue >
+                                        Filter by
+                                    </SelectValue>
+                                </SelectTrigger>
+                                <SelectContent>
+
+                                    <SelectItem value="all">All</SelectItem>
+                                    <SelectItem value="crypto">Crypto</SelectItem>
+                                    <SelectItem value="fiat">Fiat</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Asset</TableHead>
+                                    <TableHead>Available</TableHead>
+                                    <TableHead>Variable APY</TableHead>
+                                    <TableHead>Stable APY</TableHead>
+                                    <TableHead />
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="ALGO"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>ALGO</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        4,306.531805 <span className="text-muted-foreground">$552.31</span>
+                                    </TableCell>
+                                    <TableCell>6.96%</TableCell>
+                                    <TableCell>10.01%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Borrow</Button>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="USDC"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>USD Coin</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        3,276.576049 <span className="text-muted-foreground">$3,276.57</span>
+                                    </TableCell>
+                                    <TableCell>2.51%</TableCell>
+                                    <TableCell>9.92%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Borrow</Button>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
+                                        <div className="flex items-center space-x-2">
+                                            <img
+                                                src="/placeholder.svg"
+                                                alt="USDT"
+                                                className="h-6 w-6"
+                                                width="24"
+                                                height="24"
+                                                style={{ aspectRatio: "24/24", objectFit: "cover" }} />
+                                            <span>Tether</span>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        686.86078 <span className="text-muted-foreground">$686.86</span>
+                                    </TableCell>
+                                    <TableCell>3.83%</TableCell>
+                                    <TableCell>8.13%</TableCell>
+                                    <TableCell>
+                                        <Button variant="outline">Borrow</Button>
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </section>
+                </div>
+            </main>
+        </div>)
+    );
 }
 
 function SettingsIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path
-        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>)
-  );
+    return (
+        (<svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round">
+            <path
+                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+            <circle cx="12" cy="12" r="3" />
+        </svg>)
+    );
 }
 
 

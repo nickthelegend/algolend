@@ -32,7 +32,6 @@ import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import React, { useState } from "react";
 import Image from "next/image";
 import LogoSVG from "../ui/logo";
-import HeaderwithLogo from "../com/header";
 
 export function Component() {
   // State to manage the visibility of the mobile menu
@@ -44,7 +43,29 @@ export function Component() {
   };
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground ">
-      <HeaderwithLogo/>
+<header className="sticky top-0 z-40 border-b bg-background p-1 rounded-lg">
+        <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+
+          
+            <LogoSVG/>
+          {/* </div> */}
+          {/* Desktop Menu */}
+
+
+          {/* <div></div>
+            <div></div>
+            <div></div> */}
+          {/* Right-side button */}
+          <div className="flex items-center gap-4">
+            <Button className="w-32">
+              <Link href="/dashboard">Dashboard</Link>
+            </Button>
+          </div>
+        </div>
+
+
+
+      </header>
       <main className="flex-1">
         <section className=" py-12 px-3 sm:py-16 md:py-20">
           <div className="grid gap-8 md:grid-cols-2">
