@@ -51,7 +51,7 @@ export default function HeaderwithLogo() {
 
         </div>
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center justify-center gap-4">
+        <div className="hidden md:flex items-center justify-center gap-4">
           {/* Menu Items */}
 
           <NavigationMenu>
@@ -62,7 +62,7 @@ export default function HeaderwithLogo() {
                 </NavigationMenuLink> */}
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-lg font-semibold">Markets</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="text-lg font-semibold ">Markets</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[400px] p-2">
                     <NavigationMenuLink asChild>
