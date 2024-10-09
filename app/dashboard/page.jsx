@@ -9,6 +9,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import Link from "next/link"
 import LogoSVG from "@/components/ui/logo";
 import HeaderwithLogo from "@/components/com/header";
+import { Switch } from "@/components/ui/switch"
 
 // Corrected component with default export
 export default function Dashboard() {
@@ -23,6 +24,29 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col w-full bg-black">
       <HeaderwithLogo/>
+      <section className="p-4 bg-blue-600 rounded-md">
+          <div className="flex justify-between">
+            <h2 className="text-lg font-semibold">Personal Stats</h2>
+            
+            <div className="flex items-center space-x-2">
+              <span className="text-sm">View your stats</span>
+              <Switch id="view-stats" />
+            </div>
+          </div>
+          <div className="flex justify-between mt-4">
+            <div className="flex space-x-4">
+              <div className="text-sm">
+                Total Collateralized: <span className="font-bold">$1.04</span>
+              </div>
+              <div className="text-sm">
+                Total Borrowed: <span className="font-bold">$0.00</span>
+              </div>
+              <div className="text-sm">
+                Net APY: <span className="font-bold">3.92%</span>
+              </div>
+            </div>
+          </div>
+        </section>
       <div className="grid grid-cols-2 gap-4 p-4 md:p-6">
         <Card>
           <CardHeader>

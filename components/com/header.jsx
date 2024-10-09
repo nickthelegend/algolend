@@ -361,7 +361,8 @@ export default function HeaderwithLogo() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>  <p className="truncate overflow-hidden whitespace-nowrap">{truncateText(accountAddress,12)}</p>
+</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
@@ -507,4 +508,12 @@ function UserIcon(props) {
       <circle cx="12" cy="7" r="4" />
     </svg>
   );
+}
+
+
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  }
+  return text;
 }
