@@ -2,18 +2,53 @@
 
 
 import LogoSVG from "../ui/logo";
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuContent,NavigationMenuTrigger } from "@/components/ui/navigation-menu"
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import classNames from 'classnames';
+import { PeraWalletConnect } from "@perawallet/connect";
+// import { useEffect, useState } from "react";
+import algosdk from "algosdk";
 
+// Correct Algod node URL (Using AlgoExplorer)
+const algodClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '');
+
+const peraWallet = new PeraWalletConnect();
 export default function HeaderwithLogo() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [accountAddress, setAccountAddress] = useState(null);
+  const [balance, setBalance] = useState(null);  // Store wallet balance
+  const isConnectedToPeraWallet = !!accountAddress;
 
+  useEffect(() => {
+    // Reconnect to the session when the component is mounted
+    peraWallet
+      .reconnectSession()
+      .then((accounts) => {
+        peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
+
+        if (accounts.length) {
+          setAccountAddress(accounts[0]);
+          fetchAccountBalance(accounts[0]);  // Fetch balance when wallet is reconnected
+        }
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  // Fetch the account balance
+  const fetchAccountBalance = async (address) => {
+    try {
+      const accountInfo = await algodClient.accountInformation(address).do();
+      const accountBalance = algosdk.microalgosToAlgos(accountInfo.amount); // Convert microAlgos to Algos
+      setBalance(accountBalance);
+    } catch (error) {
+      console.log("Failed to fetch account balance", error);
+    }
+  };
   // Function to toggle menu visibility
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -251,7 +286,44 @@ export default function HeaderwithLogo() {
             <div></div> */}
         {/* Right-side button */}
         <div className="flex items-center gap-4">
-          <Button className="w-32">Connect Wallet</Button>
+        {isConnectedToPeraWallet ? <Button
+        onClick={
+          isConnectedToPeraWallet
+            ? handleDisconnectWalletClick
+            : handleConnectWalletClick
+        }
+        style={{
+          
+          backgroundColor: isConnectedToPeraWallet ? '#f44336' : '#4caf50', // Red for disconnect, green for connect
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          transition: 'background-color 0.3s ease, transform 0.2s',
+          // marginBottom: '16px',
+        }}
+      >
+        
+        <text className="text-white">Disconnect</text>
+      </Button> : <Button
+        onClick={
+          isConnectedToPeraWallet
+            ? handleDisconnectWalletClick
+            : handleConnectWalletClick
+        }
+        // className="w-32"
+        // style={{
+         
+        //   backgroundColor: isConnectedToPeraWallet ? '#f44336' : '#4caf50', // Red for disconnect, green for connect
+          
+        // }}
+      >
+        Connect Wallet
+      </Button>}
+        
+        
+        
+        
         </div>
       </div>
 
@@ -275,6 +347,31 @@ export default function HeaderwithLogo() {
       )}
     </header>
   );
+
+  function handleConnectWalletClick() {
+    peraWallet
+      .connect()
+      .then((newAccounts) => {
+        peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
+        setAccountAddress(newAccounts[0]);
+        fetchAccountBalance(newAccounts[0]);  // Fetch balance after wallet is connected
+      })
+      .catch((error) => {
+        if (error?.data?.type !== "CONNECT_MODAL_CLOSED") {
+          console.log(error);
+        }
+      });
+  }
+  
+  function handleDisconnectWalletClick() {
+    if (!isConnectedToPeraWallet) {
+      return;
+    }
+  
+    peraWallet.disconnect();
+    setAccountAddress(null);
+    setBalance(null);  // Clear balance on disconnect
+  }
 }
 
 
@@ -288,4 +385,6 @@ const ListItem = React.forwardRef(({ className, children, title, ...props }, for
     </NavigationMenuLink>
   </li>
 ));
+
+
 
