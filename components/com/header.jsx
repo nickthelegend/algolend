@@ -26,6 +26,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { useWalletStore } from "@/state/useWalletStore";
 
 // Correct Algod node URL (Using AlgoExplorer)
 const algodClient = new algosdk.Algodv2(
@@ -40,7 +41,7 @@ export default function HeaderwithLogo() {
   const [accountAddress, setAccountAddress] = useState(null);
   const [balance, setBalance] = useState(null); // Store wallet balance
   const isConnectedToPeraWallet = !!accountAddress;
-
+  const setAccountAddresszusta = useWalletStore((state) => state.setAccountAddress);
   useEffect(() => {
     // Reconnect to the session when the component is mounted
     peraWallet
@@ -50,6 +51,8 @@ export default function HeaderwithLogo() {
 
         if (accounts.length) {
           setAccountAddress(accounts[0]);
+          setAccountAddresszusta(accounts[0]);
+
           fetchAccountBalance(accounts[0]); // Fetch balance when wallet is reconnected
         }
       })

@@ -10,10 +10,12 @@ import Link from "next/link"
 import LogoSVG from "@/components/ui/logo";
 import HeaderwithLogo from "@/components/com/header";
 import { Switch } from "@/components/ui/switch"
+import { useWalletStore } from "@/state/useWalletStore";
 
 // Corrected component with default export
 export default function Dashboard() {
 
+  const accountAddress = useWalletStore((state) => state.accountAddress);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,7 +29,7 @@ export default function Dashboard() {
       <section className="p-4 bg-blue-600 rounded-md">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold">Personal Stats</h2>
-            
+            <span>{accountAddress }</span>
             <div className="flex items-center space-x-2">
               <span className="text-sm">View your stats</span>
               <Switch id="view-stats" />
