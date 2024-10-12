@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import Image from "next/image";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import LogoSVG from "@/components/ui/logo";
@@ -13,12 +13,42 @@ import { Switch } from "@/components/ui/switch"
 import { useWalletStore } from "@/state/useWalletStore";
 
 // Corrected component with default export
+
+import algosdk from "algosdk";
+
+const algodClient = new algosdk.Algodv2(
+  "",
+  "https://testnet-api.algonode.cloud",
+  ""
+);
 export default function Dashboard() {
 
   const accountAddress = useWalletStore((state) => state.accountAddress);
+  const [balance, setBalance] = useState(null); // Store wallet balance
+  useEffect(() => {
+    // Reconnect to the session when the component is mounted
+    
+
+        
+        if(accountAddress){
+          fetchAccountBalance(accountAddress); // Fetch balance when wallet is reconnected
+
+        }
+        
+      
+      
+  }, [accountAddress]);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const fetchAccountBalance = async (address) => {
+    try {
+      const accountInfo = await algodClient.accountInformation(address).do();
+      const accountBalance = algosdk.microalgosToAlgos(accountInfo.amount); // Convert microAlgos to Algos
+      setBalance(accountBalance);
+    } catch (error) {
+      console.log("Failed to fetch account balance", error);
+    }
+  };
   // Function to toggle menu visibility
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -26,10 +56,10 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col w-full bg-black">
       <HeaderwithLogo/>
-      <section className="p-4 bg-blue-600 rounded-md">
+      {accountAddress ? <section className="p-4 bg-blue-600 rounded-md">
           <div className="flex justify-between">
-            <h2 className="text-lg font-semibold">Personal Stats</h2>
-            <span>{accountAddress }</span>
+            <h2 className="text-lg font-semibold">Personal Stats - <span className="text-sm">{accountAddress }</span></h2>
+            
             <div className="flex items-center space-x-2">
               <span className="text-sm">View your stats</span>
               <Switch id="view-stats" />
@@ -37,6 +67,9 @@ export default function Dashboard() {
           </div>
           <div className="flex justify-between mt-4">
             <div className="flex space-x-4">
+
+            <div className="text-sm">
+            Wallet Balance: <span className="font-bold">{balance !== null ? `${balance} Algos` : "Fetching balance..."}</span>              </div>
               <div className="text-sm">
                 Total Collateralized: <span className="font-bold">$1.04</span>
               </div>
@@ -48,7 +81,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-        </section>
+        </section>: ""}
       <div className="grid grid-cols-2 gap-4 p-4 md:p-6">
         <Card>
           <CardHeader>
