@@ -57,9 +57,9 @@ export function Component() {
             <div></div> */}
           {/* Right-side button */}
           <div className="flex items-center gap-4">
-            <Button className="w-32">
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
+          <Link href="/dashboard">
+  <Button className="w-32">Dashboard</Button>
+</Link>
           </div>
         </div>
 
