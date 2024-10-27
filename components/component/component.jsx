@@ -78,8 +78,13 @@ export function Component() {
                 by smart contracts.
               </p>
               <div className="flex gap-4">
-                <Button>Become a Lender</Button>
+              <Link href="/lend">
+              <Button>Become a Lender</Button>
+              </Link>
+                
+                <Link href="/borrow">
                 <Button variant="outline">Become a Borrower</Button>
+                </Link>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
